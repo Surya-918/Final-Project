@@ -1,0 +1,2 @@
+cd "C:\Users\sppan\Downloads\StoryTelling-main\StoryTelling-main"
+npm run dev

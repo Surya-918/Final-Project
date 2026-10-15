@@ -1,0 +1,2 @@
+next_token_accuracy = 0.36648737633885353
+perplexity = 25.929741855764117

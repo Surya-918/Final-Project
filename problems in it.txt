@@ -1,0 +1,9 @@
+low overlap - Agar prompt ke shabd story mein nahi milte, toh script use "Low-Overlap" ka warning flag de deti hai (ki shayad story idea se match nahi kar rahi).
+
+False Positive kyu hai? Script sirf exact shabd ginti hai, lekin insaan jab use padhta hai toh pata chalta hai ki story actually usi idea par hi likhi gayi hai:
+
+Heuristic Overlap: Script yeh check karti hai ki prompt aur story ke beech kitne common shabd hain. Agar dono mein exact shabd kam milte hain, toh tool use flag kar deta hai.
+
+/health
+/generate 
+colllator 

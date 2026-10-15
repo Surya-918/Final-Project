@@ -1,0 +1,7 @@
+accelerate>=0.28,<2
+better-profanity>=0.7,<1
+fastapi>=0.110,<1
+torch>=2.2,<3
+transformers>=4.40,<5
+uvicorn[standard]>=0.29,<1
+matplotlib>=3.8,<4

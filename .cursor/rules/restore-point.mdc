@@ -1,0 +1,17 @@
+---
+description: Keep CONTINUE.md current as the resume point for new chats and new Cursor logins
+alwaysApply: true
+---
+
+# Restore point before stopping
+
+`CONTINUE.md` is the handoff file. A new Cursor login or chat has no old memory. Read `CONTINUE.md` first, then resume from **Do next**. Do not restart finished work or a new 3-epoch Colab train unless that file says to.
+
+When the user says credits/limit are ending, when a long task is only partly done, or before you stop, **update `CONTINUE.md` in the same turn** (do not only say it in chat):
+
+- What happened and what was decided
+- Files already changed
+- Exact next steps (numbered)
+- What not to do
+
+Chat transcripts are optional. The project file is the source of truth so a new ID can say: `CONTINUE.md padho aur wahi se chalo`.

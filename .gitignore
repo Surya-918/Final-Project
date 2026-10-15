@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.venv
+__pycache__/
+*.py[cod]
+dist
+dist-ssr
+*.local
+.story_memory.sqlite3
+.college-weights-unpack
+unused datasets/
+src\config\myenv
+.venv
+*.safetensors
+pytorch_model.bin
+optimizer.pt
+rng_state.pth
+scheduler.pt
+trainer_state.json
+training_args.bin
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

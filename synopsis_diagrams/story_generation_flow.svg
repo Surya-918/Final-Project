@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1600" viewBox="0 0 1100 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Narrative Hub Story Generation Flowchart</title>
+  <desc id="desc">End-to-end flow of prompt input, memory retrieval, Transformer story generation, saving, and user actions.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#52627a"/>
+    </marker>
+    <style>
+      .bg { fill: #f5f8fc; }
+      .title { font: 700 30px Arial, sans-serif; fill: #14243b; }
+      .subtitle { font: 15px Arial, sans-serif; fill: #5c6b82; }
+      .box { fill: #ffffff; stroke: #4f76c7; stroke-width: 2.2; }
+      .process { fill: #eaf1ff; stroke: #4f76c7; stroke-width: 2.2; }
+      .storage { fill: #e8f7f3; stroke: #23947b; stroke-width: 2.2; }
+      .decision { fill: #fff4d8; stroke: #d59a19; stroke-width: 2.2; }
+      .output { fill: #eaf7e9; stroke: #459451; stroke-width: 2.2; }
+      .error { fill: #fff0ef; stroke: #d2635d; stroke-width: 2.2; }
+      .terminal { fill: #14243b; stroke: #14243b; stroke-width: 2; }
+      .text { font: 16px Arial, sans-serif; fill: #23334a; text-anchor: middle; }
+      .small { font: 14px Arial, sans-serif; fill: #34445a; text-anchor: middle; }
+      .white { fill: #ffffff; font-weight: 700; }
+      .edge { fill: none; stroke: #52627a; stroke-width: 2.4; marker-end: url(#arrow); }
+      .label { font: 700 13px Arial, sans-serif; fill: #52627a; }
+    </style>
+  </defs>
+  <rect class="bg" width="1100" height="1600"/>
+  <text class="title" x="550" y="52" text-anchor="middle">Narrative Hub — Story Generation Flow</text>
+  <text class="subtitle" x="550" y="80" text-anchor="middle">Prompt → memory-aware generation → saved story → user actions</text>
+
+  <ellipse class="terminal" cx="550" cy="128" rx="88" ry="30"/>
+  <text class="text white" x="550" y="134">START</text>
+  <path class="edge" d="M550 158 V184"/>
+
+  <rect class="box" x="360" y="188" width="380" height="68" rx="14"/>
+  <text class="text" x="550" y="216"><tspan x="550">Open web app and enter a story idea</tspan><tspan x="550" dy="22">Select a genre</tspan></text>
+  <path class="edge" d="M550 256 V284"/>
+
+  <rect class="process" x="330" y="288" width="440" height="76" rx="14"/>
+  <text class="text" x="550" y="317"><tspan x="550">Frontend attaches conversation ID,</tspan><tspan x="550" dy="22">story ID, genre, and generation settings</tspan></text>
+  <path class="edge" d="M550 364 V392"/>
+
+  <rect class="process" x="360" y="396" width="380" height="68" rx="14"/>
+  <text class="text" x="550" y="424"><tspan x="550">POST request to FastAPI</tspan><tspan x="550" dy="22">/generate</tspan></text>
+  <path class="edge" d="M550 464 V496"/>
+
+  <polygon class="decision" points="550,498 690,558 550,618 410,558"/>
+  <text class="text" x="550" y="553"><tspan x="550">Is the request</tspan><tspan x="550" dy="22">valid?</tspan></text>
+  <path class="edge" d="M410 558 H226 V650"/>
+  <text class="label" x="314" y="546">NO</text>
+  <rect class="error" x="70" y="652" width="310" height="72" rx="14"/>
+  <text class="text" x="225" y="681"><tspan x="225">Return error response</tspan><tspan x="225" dy="22">and display error</tspan></text>
+  <path class="edge" d="M225 724 V762 H550"/>
+  <path class="edge" d="M550 618 V650"/>
+  <text class="label" x="565" y="641">YES</text>
+
+  <rect class="storage" x="340" y="654" width="420" height="74" rx="14"/>
+  <text class="text" x="550" y="683"><tspan x="550">Look up prior turns in SQLite</tspan><tspan x="550" dy="22">using conversation/story identifiers</tspan></text>
+  <path class="edge" d="M550 728 V764"/>
+
+  <polygon class="decision" points="550,766 700,828 550,890 400,828"/>
+  <text class="text" x="550" y="823"><tspan x="550">Relevant story</tspan><tspan x="550" dy="22">memory found?</tspan></text>
+  <path class="edge" d="M400 828 H250 V914"/>
+  <text class="label" x="314" y="816">NO</text>
+  <rect class="process" x="78" y="916" width="344" height="74" rx="14"/>
+  <text class="text" x="250" y="945"><tspan x="250">Start an isolated story</tspan><tspan x="250" dy="22">and assign a new story ID</tspan></text>
+  <path class="edge" d="M700 828 H850 V914"/>
+  <text class="label" x="780" y="816">YES</text>
+  <rect class="storage" x="678" y="916" width="344" height="74" rx="14"/>
+  <text class="text" x="850" y="945"><tspan x="850">Retrieve matching story turns</tspan><tspan x="850" dy="22">or recent turns for continuation</tspan></text>
+  <path class="edge" d="M250 990 V1020 H550"/>
+  <path class="edge" d="M850 990 V1020 H550 V1042"/>
+
+  <rect class="process" x="330" y="1046" width="440" height="76" rx="14"/>
+  <text class="text" x="550" y="1075"><tspan x="550">Build genre-aware model input from</tspan><tspan x="550" dy="22">premise, current request, and story history</tspan></text>
+  <path class="edge" d="M550 1122 V1150"/>
+
+  <rect class="process" x="330" y="1154" width="440" height="76" rx="14"/>
+  <text class="text" x="550" y="1183"><tspan x="550">Fit input to model context window</tspan><tspan x="550" dy="22">and generate with sampling settings</tspan></text>
+  <path class="edge" d="M550 1230 V1258"/>
+
+  <rect class="output" x="330" y="1262" width="440" height="76" rx="14"/>
+  <text class="text" x="550" y="1291"><tspan x="550">Decode generated continuation</tspan><tspan x="550" dy="22">and save prompt/response to SQLite</tspan></text>
+  <path class="edge" d="M550 1338 V1366"/>
+
+  <rect class="box" x="330" y="1370" width="440" height="76" rx="14"/>
+  <text class="text" x="550" y="1399"><tspan x="550">Return and display story in the UI</tspan><tspan x="550" dy="22">Store recent prompt and active IDs</tspan></text>
+  <path class="edge" d="M550 1446 V1470"/>
+
+  <rect class="output" x="295" y="1474" width="510" height="74" rx="14"/>
+  <text class="text" x="550" y="1503"><tspan x="550">Continue / regenerate / export PDF / start new chat</tspan><tspan x="550" dy="22">New chat resets conversation and story IDs</tspan></text>
+  <path class="edge" d="M295 1511 H40 V222 H356"/>
+  <text class="label" x="53" y="1498">NEW IDEA OR CHAT</text>
+  <path class="edge" d="M805 1511 H1060 V430 H746"/>
+  <text class="label" x="1017" y="1498">REGENERATE</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">Narrative Hub System Architecture</title>
+  <desc id="desc">Architecture showing user, React frontend, FastAPI backend, SQLite story memory, Transformer model, browser storage, and PDF export.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#52627a"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#258b74"/>
+    </marker>
+    <style>
+      .bg { fill: #f5f8fc; }
+      .title { font: 700 30px Arial, sans-serif; fill: #14243b; }
+      .subtitle { font: 15px Arial, sans-serif; fill: #5c6b82; }
+      .panel { fill: #ffffff; stroke: #d7dfeb; stroke-width: 2; }
+      .frontend { fill: #eaf1ff; stroke: #4f76c7; stroke-width: 2.4; }
+      .backend { fill: #f0ebff; stroke: #8260bf; stroke-width: 2.4; }
+      .model { fill: #fff4d8; stroke: #d59a19; stroke-width: 2.4; }
+      .database { fill: #e8f7f3; stroke: #23947b; stroke-width: 2.4; }
+      .user { fill: #14243b; stroke: #14243b; stroke-width: 2; }
+      .text { font: 16px Arial, sans-serif; fill: #23334a; text-anchor: middle; }
+      .small { font: 14px Arial, sans-serif; fill: #485970; text-anchor: middle; }
+      .white { fill: #ffffff; font-weight: 700; }
+      .heading { font: 700 15px Arial, sans-serif; fill: #5c6b82; letter-spacing: 1px; }
+      .edge { fill: none; stroke: #52627a; stroke-width: 2.5; marker-end: url(#arrow); }
+      .edgeGreen { fill: none; stroke: #258b74; stroke-width: 2.5; marker-end: url(#arrowGreen); }
+      .label { font: 700 13px Arial, sans-serif; fill: #52627a; }
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="820"/>
+  <text class="title" x="600" y="54" text-anchor="middle">Narrative Hub — System Architecture</text>
+  <text class="subtitle" x="600" y="82" text-anchor="middle">Client–server design with Transformer inference and persistent story memory</text>
+
+  <rect class="panel" x="50" y="130" width="1100" height="540" rx="24"/>
+  <text class="heading" x="84" y="166">APPLICATION AND DATA LAYER</text>
+
+  <ellipse class="user" cx="150" cy="365" rx="76" ry="45"/>
+  <text class="text white" x="150" y="371">USER</text>
+
+  <rect class="frontend" x="285" y="270" width="240" height="190" rx="20"/>
+  <text class="text" x="405" y="306"><tspan x="405" font-weight="700">React Frontend</tspan><tspan class="small" x="405" dy="30">Prompt and genre input</tspan><tspan class="small" x="405" dy="23">Story display and actions</tspan><tspan class="small" x="405" dy="23">Recent prompt restore</tspan><tspan class="small" x="405" dy="23">PDF export</tspan></text>
+
+  <rect class="backend" x="640" y="270" width="240" height="190" rx="20"/>
+  <text class="text" x="760" y="306"><tspan x="760" font-weight="700">FastAPI Backend</tspan><tspan class="small" x="760" dy="30">POST /generate</tspan><tspan class="small" x="760" dy="23">Request validation</tspan><tspan class="small" x="760" dy="23">Memory lookup</tspan><tspan class="small" x="760" dy="23">Prompt preparation</tspan></text>
+
+  <rect class="model" x="950" y="270" width="165" height="190" rx="20"/>
+  <text class="text" x="1032" y="306"><tspan x="1032" font-weight="700">Transformer</tspan><tspan class="small" x="1032" dy="30">Pretrained or</tspan><tspan class="small" x="1032" dy="23">configured local</tspan><tspan class="small" x="1032" dy="23">causal language</tspan><tspan class="small" x="1032" dy="23">model</tspan></text>
+
+  <path class="edge" d="M226 365 H278"/>
+  <text class="label" x="252" y="349">Idea + genre</text>
+  <path class="edge" d="M525 335 H633"/>
+  <text class="label" x="580" y="319">HTTP request</text>
+  <path class="edge" d="M633 405 H525"/>
+  <text class="label" x="579" y="429">Story + story ID</text>
+  <path class="edge" d="M880 335 H943"/>
+  <text class="label" x="911" y="319">Model input</text>
+  <path class="edge" d="M943 405 H880"/>
+  <text class="label" x="911" y="429">Generated text</text>
+
+  <rect class="database" x="665" y="525" width="190" height="100" rx="17"/>
+  <text class="text" x="760" y="560"><tspan x="760" font-weight="700">SQLite Memory</tspan><tspan class="small" x="760" dy="25">Story turns and IDs</tspan><tspan class="small" x="760" dy="21">Prompt / response</tspan></text>
+  <path class="edgeGreen" d="M700 460 V518"/>
+  <text class="label" x="710" y="495">Read / save turns</text>
+  <path class="edgeGreen" d="M820 518 V460"/>
+
+  <rect class="frontend" x="285" y="525" width="240" height="100" rx="17"/>
+  <text class="text" x="405" y="560"><tspan x="405" font-weight="700">Browser Storage</tspan><tspan class="small" x="405" dy="25">Conversation/story IDs</tspan><tspan class="small" x="405" dy="21">Genre and recent prompts</tspan></text>
+  <path class="edgeGreen" d="M405 460 V518"/>
+  <path class="edgeGreen" d="M355 518 V460"/>
+
+  <rect class="panel" x="350" y="710" width="500" height="72" rx="18"/>
+  <text class="text" x="600" y="739"><tspan x="600" font-weight="700">Optional model preparation</tspan><tspan class="small" x="600" dy="23">Google Colab training workflow → exported model artifact → backend model loading</tspan></text>
+  <path class="edge" d="M600 710 V680 H1032 V468"/>
+  <text class="label" x="790" y="699">Optional trained model artifact</text>
+</svg>

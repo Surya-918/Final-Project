@@ -1,0 +1,9 @@
+{
+  "test_loss": 3.283057928085327,
+  "test_model_preparation_time": 0.0024,
+  "test_next_token_accuracy": 0.3628893406620987,
+  "test_runtime": 18.8361,
+  "test_samples_per_second": 36.26,
+  "test_steps_per_second": 36.26,
+  "test_perplexity": 26.657163882370046
+}

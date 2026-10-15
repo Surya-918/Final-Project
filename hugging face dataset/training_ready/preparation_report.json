@@ -1,0 +1,102 @@
+{
+  "method": "Medium/high premise-keyword candidates; normalized paired text; minimum 5 prompt words and 100 story words; exact prompt and normalized-story deduplication across splits; near-duplicate stories are not automatically detected; no truncation; maximum 1024 tokens using the selected local GPT-2 tokenizer. Genre candidates are premise-keyword heuristics and not human-verified.",
+  "input_directory": "unused datasets\\hugging face dataset\\segregated",
+  "output_directory": "hugging face dataset\\training_ready_no_abuse",
+  "tokenizer": "trained model-college",
+  "limits": {
+    "max_tokens": 1024,
+    "min_prompt_words": 5,
+    "min_story_words": 100,
+    "keyword_signal_strength_included": [
+      "high",
+      "medium"
+    ]
+  },
+  "counts": {
+    "train": {
+      "action": {
+        "input": 54456,
+        "written": 6619,
+        "non_story_prompt": 457,
+        "abusive_or_sexual_violence": 42998,
+        "minor_sexual_content": 39,
+        "text_noise": 11,
+        "post_or_meta_noise": 186,
+        "short_prompt": 548,
+        "short_story": 2,
+        "duplicate_prompt": 2023,
+        "duplicate_story": 2,
+        "over_token_limit": 1571
+      },
+      "drama": {
+        "input": 39083,
+        "written": 6138,
+        "non_story_prompt": 379,
+        "abusive_or_sexual_violence": 27258,
+        "minor_sexual_content": 85,
+        "text_noise": 5,
+        "post_or_meta_noise": 185,
+        "short_prompt": 466,
+        "short_story": 2,
+        "duplicate_prompt": 2953,
+        "over_token_limit": 1612
+      }
+    },
+    "validation": {
+      "action": {
+        "input": 2897,
+        "written": 327,
+        "non_story_prompt": 21,
+        "abusive_or_sexual_violence": 2295,
+        "minor_sexual_content": 2,
+        "post_or_meta_noise": 12,
+        "short_prompt": 23,
+        "duplicate_prompt": 132,
+        "over_token_limit": 85
+      },
+      "drama": {
+        "input": 2292,
+        "written": 350,
+        "non_story_prompt": 17,
+        "abusive_or_sexual_violence": 1588,
+        "minor_sexual_content": 3,
+        "post_or_meta_noise": 11,
+        "short_prompt": 30,
+        "short_story": 1,
+        "duplicate_prompt": 214,
+        "over_token_limit": 78
+      }
+    },
+    "test": {
+      "action": {
+        "input": 3098,
+        "written": 340,
+        "non_story_prompt": 23,
+        "abusive_or_sexual_violence": 2442,
+        "minor_sexual_content": 4,
+        "post_or_meta_noise": 13,
+        "short_prompt": 33,
+        "duplicate_prompt": 163,
+        "duplicate_story": 1,
+        "over_token_limit": 79
+      },
+      "drama": {
+        "input": 2138,
+        "written": 343,
+        "non_story_prompt": 21,
+        "abusive_or_sexual_violence": 1498,
+        "minor_sexual_content": 6,
+        "text_noise": 1,
+        "post_or_meta_noise": 11,
+        "short_prompt": 25,
+        "duplicate_prompt": 141,
+        "over_token_limit": 92
+      }
+    }
+  },
+  "written_total": {
+    "train": 12757,
+    "validation": 677,
+    "test": 683
+  }
+}
